@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#f2eee6" />
     <meta name="description" content="Un putt. Un hoyo. Un solo intento." />
     <meta property="og:title" content="El Putt Perfecto — UNAMAS GAMES" />
-    <meta property="og:description" content="Apunta, mide la fuerza y suelta. ¿Entra o no?" />
+    <meta property="og:description" content="Lee el viento y la caída, mide la fuerza y suelta. ¿Entra o no?" />
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <title>El Putt Perfecto · UNAMAS GAMES</title>
@@ -28,19 +28,22 @@
           <p class="eyebrow">UN JUEGO PARA UNA PAUSA · N.º 007</p>
           <h1 id="title">El Putt<br /><em>Perfecto.</em></h1>
           <p class="lead">Un hoyo. Un golpe. Después, solo puedes mirar.</p>
-          <div class="weather" aria-live="polite"><span>VIENTO</span><strong id="wind">CALMA · 0 km/h</strong></div>
-          <p class="intro-note">La bola sale desde la izquierda. Arrastra hacia atrás, apunta y suelta.</p>
+          <div class="conditions" aria-live="polite">
+            <div class="condition"><span>VIENTO</span><strong id="wind">CALMA · 0 km/h</strong></div>
+            <div class="condition"><span>CAÍDA</span><strong id="slope">→ SUAVE</strong></div>
+          </div>
+          <p class="intro-note">La bola sale desde la izquierda. Lee el viento y la caída del green, arrastra hacia atrás y suelta.</p>
         </section>
 
         <section class="play-area" aria-label="Green de minigolf">
           <div class="stage-heading"><span>EL GREEN</span><span id="round-label">PUTT 01</span></div>
           <div class="scene" id="scene">
-            <canvas id="canvas" aria-label="Green horizontal de minigolf con bola a la izquierda, hoyo a la derecha y bandera"></canvas>
+            <canvas id="canvas" aria-label="Green horizontal de minigolf con bola a la izquierda, hoyo a la derecha y pendiente suave"></canvas>
             <div class="scene-overlay" id="scene-overlay" aria-hidden="true"></div>
             <div class="scene-label" id="scene-label">ARRASTRA LA BOLA HACIA LA IZQUIERDA Y SUELTA</div>
             <div class="power" id="power" hidden><span>POTENCIA</span><strong id="power-value">0%</strong></div>
           </div>
-          <p class="scene-foot"><span>APUNTA · ARRASTRA · SUELTA</span><span>UN SOLO GOLPE ↗</span></p>
+          <p class="scene-foot"><span>LEE · APUNTA · SUELTA</span><span>UN SOLO GOLPE ↗</span></p>
         </section>
 
         <section class="panel" aria-label="Información y resultado">
@@ -48,11 +51,11 @@
           <div id="ready" class="panel-body">
             <p class="section-kicker">TU TURNO</p>
             <h2>Una sola<br /><em>oportunidad.</em></h2>
-            <p class="instruction">Mira el hoyo y el viento. <strong>Arrastra la bola hacia la izquierda, en dirección contraria al golpe</strong>, y suelta cuando tengas la fuerza.</p>
-            <div class="tip"><span>←</span><p>Cuanto más arrastres, más fuerte será el putt.</p></div>
+            <p class="instruction">Mira el hoyo, el viento y la caída. <strong>Arrastra la bola hacia la izquierda, en dirección contraria al golpe</strong>, y suelta cuando tengas la fuerza.</p>
+            <div class="tip"><span>←</span><p>No basta con pasar por el hoyo: si llegas demasiado rápido, la bola seguirá de largo.</p></div>
           </div>
           <div id="rolling" class="panel-body" hidden>
-            <p class="section-kicker">EN MOVIMIENTO</p><h2>Ahora,<br /><em>a mirar.</em></h2><p class="instruction">Ya no puedes corregir. La bola se frenará sola sobre el green.</p>
+            <p class="section-kicker">EN MOVIMIENTO</p><h2>Ahora,<br /><em>a mirar.</em></h2><p class="instruction">La caída y el viento siguen actuando mientras la bola pierde velocidad.</p>
           </div>
           <div id="result" class="panel-body result" hidden aria-live="polite">
             <p class="section-kicker">EL VEREDICTO</p><h2 id="verdict">¡Casi!</h2>
