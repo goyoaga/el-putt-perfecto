@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f2eee6" />
+    <meta name="description" content="Un putt. Un hoyo. Un solo intento." />
+    <meta property="og:title" content="El Putt Perfecto — UNAMAS GAMES" />
+    <meta property="og:description" content="Apunta, mide la fuerza y suelta. ¿Entra o no?" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>El Putt Perfecto · UNAMAS GAMES</title>
+  </head>
+  <body>
+    <div class="site">
+      <header class="topbar">
+        <a class="brand" href="https://goyoaga.github.io/unamas-games/" aria-label="Ver todos los juegos de UNAMAS GAMES">
+          <span class="brand-mark" aria-hidden="true">✳</span><span>UNAMAS GAMES <span class="index">/ 007</span></span>
+        </a>
+        <div class="top-actions">
+          <button class="icon-button" id="bookmark" type="button" aria-label="Cómo guardar este juego en favoritos" title="Guardar en favoritos">☆ <span class="button-word">GUARDAR</span></button>
+          <button class="icon-button sound-button" id="sound" type="button" aria-label="Activar sonido" aria-pressed="false" title="Sonido"><span id="sound-icon" aria-hidden="true">◖̸</span> <span id="sound-label">OFF</span></button>
+        </div>
+      </header>
+
+      <main class="game-layout">
+        <section class="intro" aria-labelledby="title">
+          <p class="eyebrow">UN JUEGO PARA UNA PAUSA · N.º 007</p>
+          <h1 id="title">El Putt<br /><em>Perfecto.</em></h1>
+          <p class="lead">Un hoyo. Un golpe. Después, solo puedes mirar.</p>
+          <div class="weather" aria-live="polite">
+            <span>VIENTO</span>
+            <strong id="wind">CALMA · 0 km/h</strong>
+          </div>
+          <p class="intro-note">Toca la bola, arrastra hacia atrás y suelta. La distancia del gesto controla la potencia.</p>
+        </section>
+
+        <section class="play-area" aria-label="Green de minigolf">
+          <div class="stage-heading"><span>EL GREEN</span><span id="round-label">PUTT 01</span></div>
+          <div class="scene" id="scene">
+            <canvas id="canvas" aria-label="Green de minigolf con bola, hoyo y bandera"></canvas>
+            <div class="scene-overlay" id="scene-overlay" aria-hidden="true"></div>
+            <div class="scene-label" id="scene-label">ARRASTRA DESDE LA BOLA Y SUELTA</div>
+            <div class="power" id="power" hidden><span>POTENCIA</span><strong id="power-value">0%</strong></div>
+          </div>
+          <p class="scene-foot"><span>APUNTA · ARRASTRA · SUELTA</span><span>UN SOLO GOLPE ↗</span></p>
+        </section>
+
+        <section class="panel" aria-label="Información y resultado">
+          <div class="panel-heading"><span>EL RETO</span><span>1 GOLPE</span></div>
+          <div id="ready" class="panel-body">
+            <p class="section-kicker">TU TURNO</p>
+            <h2>Una sola<br /><em>oportunidad.</em></h2>
+            <p class="instruction">Mira el hoyo y el viento. <strong>Arrastra desde la bola en dirección contraria al golpe</strong> y suelta cuando tengas la fuerza.</p>
+            <div class="tip"><span>↙</span><p>Cuanto más arrastres, más fuerte será el putt.</p></div>
+          </div>
+          <div id="rolling" class="panel-body" hidden>
+            <p class="section-kicker">EN MOVIMIENTO</p>
+            <h2>Ahora,<br /><em>a mirar.</em></h2>
+            <p class="instruction">Ya no puedes corregir. La bola se frenará sola sobre el green.</p>
+          </div>
+          <div id="result" class="panel-body result" hidden aria-live="polite">
+            <p class="section-kicker">EL VEREDICTO</p>
+            <h2 id="verdict">¡Casi!</h2>
+            <div class="score"><strong id="distance">—</strong><span id="distance-unit">CM<br />DEL HOYO</span></div>
+            <p class="side" id="side">—</p>
+            <p class="best" id="best">MEJOR MARCA · —</p>
+            <button id="again" class="primary" type="button"><span>UNA MÁS</span><span aria-hidden="true">↗</span></button>
+            <a class="coffee" href="https://ko-fi.com/arielgoyoaga" target="_blank" rel="noopener noreferrer">¿TE DIVERTISTE? INVÍTAME UN CAFÉ ☕ ↗</a>
+          </div>
+          <div class="panel-foot"><a class="bytehive-signature" href="https://bytehive.pro" target="_blank" rel="noopener noreferrer" aria-label="bytehive lab"><span class="bytehive-mark" aria-hidden="true">⬢</span><span>by bytehive lab</span></a></div>
+        </section>
+      </main>
+
+      <dialog id="bookmark-dialog" class="bookmark-dialog" aria-labelledby="bookmark-title">
+        <form method="dialog">
+          <button class="dialog-close" type="submit" aria-label="Cerrar">×</button>
+          <p class="section-kicker">VUELVE CUANDO QUIERAS</p>
+          <h2 id="bookmark-title">Una partida<br /><em>más.</em></h2>
+          <p id="bookmark-text">Abre el menú del navegador y elige «Añadir a favoritos».</p>
+          <button class="dialog-done" type="submit">ENTENDIDO ↗</button>
+        </form>
+      </dialog>
+    </div>
+
+    <script data-goatcounter="https://elputtperfecto.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
