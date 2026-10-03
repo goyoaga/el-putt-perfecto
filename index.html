@@ -28,19 +28,16 @@
           <p class="eyebrow">UN JUEGO PARA UNA PAUSA · N.º 007</p>
           <h1 id="title">El Putt<br /><em>Perfecto.</em></h1>
           <p class="lead">Un hoyo. Un golpe. Después, solo puedes mirar.</p>
-          <div class="weather" aria-live="polite">
-            <span>VIENTO</span>
-            <strong id="wind">CALMA · 0 km/h</strong>
-          </div>
-          <p class="intro-note">Toca la bola, arrastra hacia atrás y suelta. La distancia del gesto controla la potencia.</p>
+          <div class="weather" aria-live="polite"><span>VIENTO</span><strong id="wind">CALMA · 0 km/h</strong></div>
+          <p class="intro-note">La bola sale desde la izquierda. Arrastra hacia atrás, apunta y suelta.</p>
         </section>
 
         <section class="play-area" aria-label="Green de minigolf">
           <div class="stage-heading"><span>EL GREEN</span><span id="round-label">PUTT 01</span></div>
           <div class="scene" id="scene">
-            <canvas id="canvas" aria-label="Green de minigolf con bola, hoyo y bandera"></canvas>
+            <canvas id="canvas" aria-label="Green horizontal de minigolf con bola a la izquierda, hoyo a la derecha y bandera"></canvas>
             <div class="scene-overlay" id="scene-overlay" aria-hidden="true"></div>
-            <div class="scene-label" id="scene-label">ARRASTRA DESDE LA BOLA Y SUELTA</div>
+            <div class="scene-label" id="scene-label">ARRASTRA LA BOLA HACIA LA IZQUIERDA Y SUELTA</div>
             <div class="power" id="power" hidden><span>POTENCIA</span><strong id="power-value">0%</strong></div>
           </div>
           <p class="scene-foot"><span>APUNTA · ARRASTRA · SUELTA</span><span>UN SOLO GOLPE ↗</span></p>
@@ -51,20 +48,16 @@
           <div id="ready" class="panel-body">
             <p class="section-kicker">TU TURNO</p>
             <h2>Una sola<br /><em>oportunidad.</em></h2>
-            <p class="instruction">Mira el hoyo y el viento. <strong>Arrastra desde la bola en dirección contraria al golpe</strong> y suelta cuando tengas la fuerza.</p>
-            <div class="tip"><span>↙</span><p>Cuanto más arrastres, más fuerte será el putt.</p></div>
+            <p class="instruction">Mira el hoyo y el viento. <strong>Arrastra la bola hacia la izquierda, en dirección contraria al golpe</strong>, y suelta cuando tengas la fuerza.</p>
+            <div class="tip"><span>←</span><p>Cuanto más arrastres, más fuerte será el putt.</p></div>
           </div>
           <div id="rolling" class="panel-body" hidden>
-            <p class="section-kicker">EN MOVIMIENTO</p>
-            <h2>Ahora,<br /><em>a mirar.</em></h2>
-            <p class="instruction">Ya no puedes corregir. La bola se frenará sola sobre el green.</p>
+            <p class="section-kicker">EN MOVIMIENTO</p><h2>Ahora,<br /><em>a mirar.</em></h2><p class="instruction">Ya no puedes corregir. La bola se frenará sola sobre el green.</p>
           </div>
           <div id="result" class="panel-body result" hidden aria-live="polite">
-            <p class="section-kicker">EL VEREDICTO</p>
-            <h2 id="verdict">¡Casi!</h2>
+            <p class="section-kicker">EL VEREDICTO</p><h2 id="verdict">¡Casi!</h2>
             <div class="score"><strong id="distance">—</strong><span id="distance-unit">CM<br />DEL HOYO</span></div>
-            <p class="side" id="side">—</p>
-            <p class="best" id="best">MEJOR MARCA · —</p>
+            <p class="side" id="side">—</p><p class="best" id="best">MEJOR MARCA · —</p>
             <button id="again" class="primary" type="button"><span>UNA MÁS</span><span aria-hidden="true">↗</span></button>
             <a class="coffee" href="https://ko-fi.com/arielgoyoaga" target="_blank" rel="noopener noreferrer">¿TE DIVERTISTE? INVÍTAME UN CAFÉ ☕ ↗</a>
           </div>
@@ -73,16 +66,9 @@
       </main>
 
       <dialog id="bookmark-dialog" class="bookmark-dialog" aria-labelledby="bookmark-title">
-        <form method="dialog">
-          <button class="dialog-close" type="submit" aria-label="Cerrar">×</button>
-          <p class="section-kicker">VUELVE CUANDO QUIERAS</p>
-          <h2 id="bookmark-title">Una partida<br /><em>más.</em></h2>
-          <p id="bookmark-text">Abre el menú del navegador y elige «Añadir a favoritos».</p>
-          <button class="dialog-done" type="submit">ENTENDIDO ↗</button>
-        </form>
+        <form method="dialog"><button class="dialog-close" type="submit" aria-label="Cerrar">×</button><p class="section-kicker">VUELVE CUANDO QUIERAS</p><h2 id="bookmark-title">Una partida<br /><em>más.</em></h2><p id="bookmark-text">Abre el menú del navegador y elige «Añadir a favoritos».</p><button class="dialog-done" type="submit">ENTENDIDO ↗</button></form>
       </dialog>
     </div>
-
     <script data-goatcounter="https://elputtperfecto.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <script type="module" src="/src/main.js"></script>
   </body>
