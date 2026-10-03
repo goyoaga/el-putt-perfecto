@@ -13,9 +13,9 @@ const HOLE_R = 0.19;
 const MIN_DRAG = 0.28;
 const MAX_DRAG = 2.15;
 const FRICTION = 1.02;
-const WIND_ACCEL_MAX = 0.08;
-const SLOPE_ACCEL_MIN = 0.035;
-const SLOPE_ACCEL_MAX = 0.085;
+const WIND_ACCEL_MAX = 0.12;
+const SLOPE_ACCEL_MIN = 0.07;
+const SLOPE_ACCEL_MAX = 0.17;
 const CUP_CAPTURE_SPEED = 0.92;
 
 let renderer, camera, world, ball, holeDisc, holeRing, flagGroup, aimLine, pullLine, raycaster, pointer, groundPlane, clock, slopeGroup;
@@ -25,7 +25,7 @@ let dragging = false;
 let dragPoint = new THREE.Vector3();
 let shotVelocity = new THREE.Vector2();
 let wind = { speed: 0, angle: 0, vector: new THREE.Vector2() };
-let slope = { strength: 0.05, angle: Math.PI / 2, vector: new THREE.Vector2(0, 0.05) };
+let slope = { strength: 0.1, angle: Math.PI / 2, vector: new THREE.Vector2(0, 0.1) };
 let hole = new THREE.Vector2(3.3, 0);
 let holed = false;
 let sinkT = 0;
@@ -234,7 +234,7 @@ function windLabel() {
 }
 
 function slopeLabel() {
-  const strength = slope.strength < 0.05 ? 'MUY SUAVE' : slope.strength < 0.072 ? 'SUAVE' : 'MEDIA';
+  const strength = slope.strength < 0.10 ? 'SUAVE' : slope.strength < 0.14 ? 'MEDIA' : 'MARCADA';
   return `${arrowFor(slope.angle)} ${strength}`;
 }
 
