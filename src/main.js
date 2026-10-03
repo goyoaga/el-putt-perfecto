@@ -13,9 +13,9 @@ const HOLE_R = 0.19;
 const MIN_DRAG = 0.28;
 const MAX_DRAG = 2.15;
 const FRICTION = 1.02;
-const WIND_ACCEL_MAX = 0.12;
-const SLOPE_ACCEL_MIN = 0.07;
-const SLOPE_ACCEL_MAX = 0.17;
+const WIND_ACCEL_MAX = 0.138;
+const SLOPE_ACCEL_MIN = 0.0805;
+const SLOPE_ACCEL_MAX = 0.1955;
 
 let renderer, camera, world, ball, holeDisc, holeRing, flagGroup, aimLine, pullLine, raycaster, pointer, groundPlane, clock, slopeGroup;
 let phase = 'ready';
