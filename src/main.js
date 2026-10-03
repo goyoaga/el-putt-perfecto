@@ -16,7 +16,6 @@ const FRICTION = 1.02;
 const WIND_ACCEL_MAX = 0.12;
 const SLOPE_ACCEL_MIN = 0.07;
 const SLOPE_ACCEL_MAX = 0.17;
-const CUP_CAPTURE_SPEED = 0.92;
 
 let renderer, camera, world, ball, holeDisc, holeRing, flagGroup, aimLine, pullLine, raycaster, pointer, groundPlane, clock, slopeGroup;
 let phase = 'ready';
@@ -32,7 +31,6 @@ let sinkT = 0;
 let audioOn = false;
 let audioContext = null;
 let best = Infinity;
-let passedCupFast = false;
 
 try {
   const saved = Number(localStorage.getItem('el-putt-perfecto-best'));
@@ -244,7 +242,6 @@ function startRound() {
   dragging = false;
   holed = false;
   sinkT = 0;
-  passedCupFast = false;
   shotVelocity.set(0, 0);
   ball.visible = true;
   ball.scale.setScalar(1);
@@ -406,12 +403,8 @@ function physics(dt) {
   const dx = ball.position.x - hole.x;
   const dz = ball.position.z - hole.y;
   const dist = Math.hypot(dx, dz);
-  const currentSpeed = shotVelocity.length();
-
-  if (dist < HOLE_R * 0.74) {
-    if (currentSpeed <= CUP_CAPTURE_SPEED) return beginSink();
-    passedCupFast = true;
-  }
+  // Si el centro de la bola cruza la zona útil de la copa, entra siempre.
+  if (dist < HOLE_R * 0.88) return beginSink();
 
   if (Math.abs(ball.position.x) > GREEN_W / 2 + 0.25 || Math.abs(ball.position.z) > GREEN_L / 2 + 0.25) finish(false, true);
 }
@@ -452,10 +445,7 @@ function finish(isHoled, out = false) {
   } else if (out) {
     verdict = 'Fuera.';
     detail = 'Te fuiste del green.';
-  } else if (passedCupFast && cm <= 95) {
-    verdict = '¡Demasiado fuerte!';
-    detail = 'Pasó por el hoyo, pero llevaba demasiada velocidad.';
-  } else if (cm <= 12) {
+    } else if (cm <= 12) {
     verdict = '¡Casi!';
     detail = `Se quedó a solo ${cm} cm.`;
   } else if (cm <= 35) {
@@ -472,7 +462,7 @@ function finish(isHoled, out = false) {
   $('distance').textContent = isHoled ? '✓' : String(cm);
   $('distance-unit').innerHTML = isHoled ? 'EMBOCADO<br />DE UN GOLPE' : 'CM<br />DEL HOYO';
   $('side').textContent = detail;
-  $('scene-label').textContent = isHoled ? 'PUTT PERFECTO' : (passedCupFast ? 'PASÓ DE LARGO' : 'RESULTADO REGISTRADO');
+  $('scene-label').textContent = isHoled ? 'PUTT PERFECTO' : 'RESULTADO REGISTRADO';
 
   if (distanceM < best) {
     best = distanceM;
@@ -486,7 +476,7 @@ function finish(isHoled, out = false) {
     celebrate();
     tone(880, 0.16, 0.07);
   } else {
-    tone(passedCupFast ? 205 : 250, 0.06, 0.035);
+    tone(250, 0.06, 0.035);
   }
 
   trackCompletedRound();
