@@ -250,7 +250,7 @@ function startRound() {
   ball.scale.setScalar(1);
   ball.rotation.set(0, 0, 0);
 
-  ball.position.set(rand(-3.72, -3.30), BALL_R, rand(-0.42, 0.42));
+  // Salida aprox. al 20% del ancho del green: conserva recorrido hacia el hoyo\n  // y deja margen real a la izquierda para cargar el gesto en móvil.\n  ball.position.set(rand(-3.18, -2.86), BALL_R, rand(-0.42, 0.42));
   setHolePosition(rand(2.70, 3.88), rand(-1.58, 1.58));
 
   const speed = Math.random() < 0.14 ? 0 : rand(1.5, 8);
