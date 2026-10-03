@@ -250,8 +250,19 @@ function startRound() {
   ball.scale.setScalar(1);
   ball.rotation.set(0, 0, 0);
 
-  // Salida aprox. al 20% del ancho del green: conserva recorrido hacia el hoyo\n  // y deja margen real a la izquierda para cargar el gesto en móvil.\n  ball.position.set(rand(-3.18, -2.86), BALL_R, rand(-0.42, 0.42));
-  setHolePosition(rand(2.70, 3.88), rand(-1.58, 1.58));
+  // Generación segura: la bola vive en el 20–30% del green y el hoyo en el 72–88%.
+  // Así siempre queda espacio físico para cargar el gesto y un recorrido real de putt.
+  const ballX = rand(-3.24, -2.16);
+  const ballZ = rand(-0.78, 0.78);
+  ball.position.set(ballX, BALL_R, ballZ);
+
+  let holeX;
+  let holeZ;
+  do {
+    holeX = rand(2.38, 4.10);
+    holeZ = rand(-1.62, 1.62);
+  } while (Math.hypot(holeX - ballX, holeZ - ballZ) < 5.0);
+  setHolePosition(holeX, holeZ);
 
   const speed = Math.random() < 0.14 ? 0 : rand(1.5, 8);
   let angle;
@@ -274,7 +285,7 @@ function startRound() {
   $('round-label').textContent = `PUTT ${String(roundNumber).padStart(2, '0')}`;
   $('wind').textContent = windLabel();
   $('slope').textContent = slopeLabel();
-  $('scene-label').textContent = 'ARRASTRA LA BOLA HACIA LA IZQUIERDA Y SUELTA';
+  $('scene-label').textContent = 'ARRASTRA HACIA LA IZQUIERDA Y SUELTA';
   $('ready').hidden = false;
   $('rolling').hidden = true;
   $('result').hidden = true;
@@ -351,7 +362,7 @@ function onPointerUp(event) {
     aimLine.visible = pullLine.visible = false;
     $('power').hidden = true;
     $('scene-label').textContent = 'ARRASTRA UN POCO MÁS';
-    setTimeout(() => { if (phase === 'ready') $('scene-label').textContent = 'ARRASTRA LA BOLA HACIA LA IZQUIERDA Y SUELTA'; }, 900);
+    setTimeout(() => { if (phase === 'ready') $('scene-label').textContent = 'ARRASTRA HACIA LA IZQUIERDA Y SUELTA'; }, 900);
     return;
   }
 
@@ -359,7 +370,7 @@ function onPointerUp(event) {
     aimLine.visible = pullLine.visible = false;
     $('power').hidden = true;
     $('scene-label').textContent = 'EL GOLPE DEBE IR HACIA LA DERECHA';
-    setTimeout(() => { if (phase === 'ready') $('scene-label').textContent = 'ARRASTRA LA BOLA HACIA LA IZQUIERDA Y SUELTA'; }, 1000);
+    setTimeout(() => { if (phase === 'ready') $('scene-label').textContent = 'ARRASTRA HACIA LA IZQUIERDA Y SUELTA'; }, 1000);
     return;
   }
 
